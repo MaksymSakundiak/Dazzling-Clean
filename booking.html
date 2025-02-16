@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Service - Dazzling Clean</title>
+    <link rel="stylesheet" href="styles/book.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo-removebg-preview.png" alt="Dazzling Clean Logo">
+                </a>
+                <span class="logo-text">Dazzling Clean</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="booking-section">
+        <h2>Book a Service</h2>
+        <p>Fill out the form below to book your service.</p>
+        <form class="booking-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="service">Service:</label>
+                <input type="text" id="service" name="service" readonly>
+            </div>
+            <div class="form-group">
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <button type="submit" class="submit-btn">Book Now</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Dazzling Clean. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Populate the service field based on the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const service = urlParams.get('service');
+        document.getElementById('service').value = service;
+    </script>
+</body>
+</html>
