@@ -69,6 +69,7 @@ header nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
     margin: 0;
     padding: 0;
 }
@@ -737,7 +738,7 @@ footer p {
     header nav ul li {
         flex-direction: row;
         display: inline-block; /* Ensures they stay in a row */
-        white-space: wrap; /* Prevents text wrapping */
+        flex-wrap: wrap;
     }
     
     
