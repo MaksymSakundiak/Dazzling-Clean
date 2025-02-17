@@ -85,12 +85,12 @@ header nav ul li a:hover {
 /* Responsive Styles */
 @media (max-width: 768px) {
     header .container {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
     }
 
     header nav ul {
-        flex-direction: column; /* Stacks items on mobile */
+        flex-direction: row; /* Stacks items on mobile */
         width: 100%;
         text-align: center;
     }
