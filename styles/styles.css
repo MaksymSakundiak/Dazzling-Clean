@@ -8,14 +8,14 @@ body {
     line-height: 1.6;
 }
 
-/* Header with Logo and Text */
+/* Header with Logo and Navigation */
 header {
     background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
     backdrop-filter: blur(10px); /* Glass-morphism effect */
     color: white;
     padding: 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: sticky; /* Changed from sticky to absolute */
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -25,8 +25,7 @@ header {
 
 header .container {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap */
-    flex-direction: row;
+    flex-direction: row; /* Ensure row layout */
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
@@ -34,7 +33,7 @@ header .container {
     padding: 0 20px;
 }
 
-
+/* Logo Styling */
 header .logo-container {
     display: flex;
     align-items: center;
@@ -42,7 +41,7 @@ header .logo-container {
 }
 
 header .logo img {
-    height: 60px; /* Smaller logo for better proportion */
+    height: 60px; /* Adjusted for better proportion */
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -52,9 +51,8 @@ header .logo img:hover {
 }
 
 header .logo-text {
-    font-size: 1.5rem; /* Slightly larger text */
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #000000;
     background: linear-gradient(90deg, #181818, #1378fd);
     -webkit-background-clip: text;
     background-clip: text;
@@ -66,23 +64,43 @@ header .logo-container:hover .logo-text {
     opacity: 0.8;
 }
 
+/* Navigation Styling */
 header nav ul {
     display: flex;
-    flex-direction: row; /* Ensure items are in a row */
-    list-style: none; /* Remove default list styling */
+    flex-direction: row; /* Ensure menu items are in a row */
+    list-style: none;
     padding: 0;
     margin: 0;
-    gap: 15px; /* Space between items */
-    justify-content: flex-end; /* Align items to the right */
+    gap: 15px; /* Space between menu items */
+    justify-content: flex-end;
     align-items: center;
 }
 
-/* Ensure list items display inline */
 header nav ul li {
     display: inline-block;
 }
 
-/* Responsive Fix: Change direction for mobile */
+header nav ul li a {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000000;
+    background: linear-gradient(90deg, #181818, #1378fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: opacity 0.3s ease, background 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+    text-decoration: none;
+}
+
+/* Responsive Design for Header */
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
@@ -90,58 +108,32 @@ header nav ul li {
         text-align: center;
     }
 
+    header .logo img {
+        height: 50px; /* Adjusted for mobile */
+    }
+
+    header .logo-text {
+        font-size: 1.2rem; /* Adjusted for mobile */
+    }
+
     header nav ul {
-        flex-direction: column; /* Stack items in a column */
+        flex-direction: column; /* Stack items vertically */
         width: 100%;
         padding-top: 10px;
     }
 
     header nav ul li {
-        width: 100%; /* Ensure full width for easier touch */
-    }
-}
-
-
-header nav ul li a {
-    font-size: 1.1rem; /* Slightly smaller text */
-    font-weight: bold;
-    min-width: auto; /* Ensures flexibility */
-    flex: 1 1 auto; /* Allows shrinking and wrapping */
-    color: #000000;
-    background: linear-gradient(90deg, #181818, #1378fd);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    transition: opacity 0.3s ease;
-    padding: 8px 12px; /* Add padding for better click area */
-    border-radius: 8px; /* Rounded corners */
-}
-
-header nav ul li a:hover {
-    background: rgba(37, 99, 235, 0.1); /* Subtle hover background */
-    color: #2563eb; /* Solid color on hover */
-    text-decoration: none;
-}
-
-/* Responsive Design for Header */
-@media (max-width: 768px) {
-    header .logo img {
-        height: 50px; /* Smaller logo for mobile */
-    }
-
-    header .logo-text {
-        font-size: 1.2rem; /* Smaller text for mobile */
-    }
-
-    header nav ul {
-        gap: 10px; /* Smaller gap for mobile */
+        width: 100%;
     }
 
     header nav ul li a {
-        font-size: 1rem; /* Smaller text for mobile */
-        padding: 6px 10px; /* Smaller padding for mobile */
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
     }
 }
+
 
 /* Home Section */
 .landing {
