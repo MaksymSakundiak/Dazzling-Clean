@@ -735,14 +735,6 @@ footer p {
         margin: 10px 0;
     }
 
-    .menu-toggle {
-        display: block; /* Show menu button */
-        cursor: pointer;
-    }
-
-    .menu-toggle.active + nav ul {
-        display: flex; /* Show menu on toggle */
-    }
 }
 @media (max-width: 768px) {
     .landing {
