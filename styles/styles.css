@@ -700,47 +700,72 @@ footer p {
     margin: 0;
     font-size: 1rem;
 }
+/* Ensure Header Stays in a Row */
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px 5%;
+}
 
-/* General Fixes for Sections */
-@media (max-width: 1024px) {
-    .container, .about-section, .our-story-section, .our-values-section, .services-section {
-        max-width: 95%;
-        padding: 40px 5%;
-    }
-
-    .about-section h2, .our-story-section h3, .our-values-section h3, .services-section h2 {
-        font-size: 2.2rem;
-    }
-
-    .services-grid, .reasons-grid, .values-grid {
-        grid-template-columns: 1fr; /* Single column on smaller devices */
-    }
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 @media (max-width: 768px) {
     header .container {
-        flex-direction: row;
-        text-align: center;
+        flex-direction: row; /* Ensure it stays as a row */
+        text-align: left;
     }
 
     header nav ul {
-        flex-direction: row;
-        gap: 15px;
-    }
-
-    .landing h1 {
-        font-size: 2.5rem;
-    }
-
-    .landing p {
-        font-size: 1.2rem;
-    }
-
-    .about-section, .our-story-section, .our-values-section, .services-section {
-        padding: 40px 3%;
-    }
-
-    .service-card img {
-        height: 150px; /* Reduce image height on smaller screens */
+        justify-content: center;
     }
 }
+
+/* Fix Contact Us Section */
+.contact-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
