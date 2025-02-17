@@ -110,7 +110,7 @@ header nav ul li a:hover {
     }
 
     header nav ul li {
-        white-space: nowrap; /* Prevent text from wrapping */
+        white-space: wrap; /* Prevent text from wrapping */
     }
 
     header nav ul li a {
