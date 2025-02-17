@@ -712,7 +712,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allow items to stack if needed */
+    flex-wrap: wrap; /* Allow items to wrap when necessary */
     padding: 20px 5%;
     max-width: 1200px;
     margin: auto;
@@ -721,13 +721,14 @@ header .container {
 header nav ul {
     display: flex;
     gap: 20px;
-    flex-direction: row; /* Stack navigation links */
+    flex-direction: row;
     list-style: none;
     padding: 0;
     margin: 0;
+    align-items: center; /* Ensure alignment */
 }
+
 header nav ul li {
-    width: 100%;
     text-align: center;
 }
 
@@ -738,9 +739,11 @@ header nav ul li a {
     color: #000;
 }
 
+/* Tablet View */
 @media (max-width: 1024px) {
     header .container {
         padding: 15px 5%;
+        flex-wrap: wrap; /* Prevents elements from squeezing */
     }
 
     header nav ul {
@@ -748,15 +751,22 @@ header nav ul li a {
     }
 }
 
+/* Mobile View */
 @media (max-width: 768px) {
     header .container {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     header nav ul {
-        gap: 10px;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    header nav ul li {
+        width: auto; /* Prevents forced full width */
     }
 }
 
@@ -852,9 +862,14 @@ header nav ul li a {
     }
 }
 
+/* Mobile Adjustments */
 @media (max-width: 768px) {
     .contact-section {
         padding: 40px 5%;
+    }
+
+    .form-group {
+        width: 100%;
     }
 
     .form-group input,
