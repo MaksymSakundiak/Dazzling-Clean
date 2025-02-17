@@ -10,8 +10,8 @@ body {
 
 /* Header with Logo and Navigation */
 header {
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Glass-morphism effect */
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
     color: white;
     padding: 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -19,13 +19,13 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000; /* Ensure header is on top */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 header .container {
     display: flex;
-    flex-direction: row; /* Ensure row layout */
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
@@ -41,7 +41,7 @@ header .logo-container {
 }
 
 header .logo img {
-    height: 60px; /* Adjusted for better proportion */
+    height: 60px;
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -65,15 +65,21 @@ header .logo-container:hover .logo-text {
 }
 
 /* Navigation Styling */
+header nav {
+    flex: 1; /* Allows flex behavior */
+    display: flex;
+    justify-content: flex-end; /* Aligns nav to the right */
+}
+
 header nav ul {
     display: flex;
-    flex-direction: row; /* Ensure menu items are in a row */
+    flex-direction: row; /* Ensure horizontal layout */
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 15px; /* Space between menu items */
-    justify-content: flex-end;
+    gap: 20px;
     align-items: center;
+    white-space: nowrap; /* Prevents wrapping */
 }
 
 header nav ul li {
@@ -97,10 +103,9 @@ header nav ul li a {
 header nav ul li a:hover {
     background: rgba(37, 99, 235, 0.1);
     color: #2563eb;
-    text-decoration: none;
 }
 
-/* Responsive Design for Header */
+/* Responsive Fix for Smaller Screens */
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
@@ -108,16 +113,12 @@ header nav ul li a:hover {
         text-align: center;
     }
 
-    header .logo img {
-        height: 50px; /* Adjusted for mobile */
-    }
-
-    header .logo-text {
-        font-size: 1.2rem; /* Adjusted for mobile */
+    header nav {
+        width: 100%;
     }
 
     header nav ul {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column; /* Stack items in a column */
         width: 100%;
         padding-top: 10px;
     }
@@ -133,6 +134,7 @@ header nav ul li a:hover {
         padding: 10px 0;
     }
 }
+
 
 
 /* Home Section */
