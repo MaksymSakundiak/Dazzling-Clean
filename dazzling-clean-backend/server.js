@@ -44,11 +44,6 @@ app.post('/submit-booking', (req, res) => {
     });
 });
 
-const cors = require("cors");
-app.use(cors({
-    origin: "https://maksymsakundiak.github.io", // Allow requests from GitHub Pages
-    methods: ["GET", "POST"]
-}));
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
