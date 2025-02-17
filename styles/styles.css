@@ -615,8 +615,8 @@ header nav ul li a:hover {
 /* Contact Section */
 .contact-section {
     max-width: 800px;
-    margin: 160px auto;
-    padding: 60px;
+    margin: 60px auto;
+    padding: 90px;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 24px;
