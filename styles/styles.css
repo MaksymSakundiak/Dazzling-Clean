@@ -711,8 +711,9 @@ footer p {
     .about-section,
     .our-story-section,
     .our-values-section,
-    .services-section {
-        padding: 40px 20px; /* Reduce padding for better fit */
+    .services-section,
+    .contact-section {
+        padding: 0px 0px; /* Reduce padding for better fit */
     }
 }
 
