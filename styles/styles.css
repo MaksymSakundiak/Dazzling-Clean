@@ -95,7 +95,7 @@ header nav ul li a:hover {
 }
 
 /* Responsive Styles */
-@media (max-width: 668px) {
+@media (max-width: 768px) {
     header .container {
         flex-direction: row; /* Keep the container in a row */
         align-items: center;
