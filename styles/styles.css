@@ -733,6 +733,7 @@ footer p {
     }
 
     header nav ul li {
+        flex-direction: row;
         display: inline-block; /* Ensures they stay in a row */
         white-space: wrap; /* Prevents text wrapping */
     }
