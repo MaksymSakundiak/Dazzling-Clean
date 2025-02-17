@@ -77,6 +77,8 @@ header nav ul {
 header nav ul li a {
     font-size: 1.1rem; /* Slightly smaller text */
     font-weight: bold;
+    min-width: auto; /* Ensures flexibility */
+    flex: 1 1 auto; /* Allows shrinking and wrapping */
     color: #000000;
     background: linear-gradient(90deg, #181818, #1378fd);
     -webkit-background-clip: text;
