@@ -70,7 +70,8 @@ header nav ul {
     padding: 0;
     margin: 0;
     gap: 20px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; /* Allow items to wrap in case of overflow */
+    justify-content: flex-end; /* Align items to the right */
 }
 
 header nav ul li {
@@ -104,6 +105,10 @@ header nav ul li a:hover {
         width: 100%;
         text-align: center;
         gap: 15px;
+    }
+
+    header nav ul li {
+        width: 100%; /* Make each item take full width */
     }
 
     header nav ul li a {
