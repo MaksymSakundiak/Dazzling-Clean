@@ -25,14 +25,15 @@ header {
 
 header .container {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row; /* Force items to be in a row */
+    flex-wrap: wrap; /* Allow wrapping */
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: auto;
     padding: 0 20px;
 }
+
 
 header .logo-container {
     display: flex;
