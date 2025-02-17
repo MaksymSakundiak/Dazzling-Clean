@@ -72,9 +72,7 @@ header nav ul {
     padding: 0;
     margin: 0;
     gap: 20px;
-    flex-wrap: nowrap; /* Prevent wrapping */
-    justify-content: flex-end;
-    overflow-x: auto; /* Allow horizontal scroll */
+    flex-wrap: nowrap;
 }
 
 header nav ul li {
@@ -111,10 +109,6 @@ header nav ul li a:hover {
         width: 100%;
         text-align: center;
         gap: 15px;
-    }
-
-    header nav ul li {
-        white-space: wrap; /* Prevent text from wrapping */
     }
 
     header nav ul li a {
