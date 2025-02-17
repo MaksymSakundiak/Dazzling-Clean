@@ -65,7 +65,7 @@ header .logo-container:hover .logo-text {
 
 header nav ul {
     list-style: none;
-    display: flex;
+    display: table-row;
     gap: 20px;
     margin: 0;
     padding: 0;
