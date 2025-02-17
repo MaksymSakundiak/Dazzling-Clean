@@ -25,7 +25,7 @@ header {
 
 header .container {
     display: flex;
-    white-space: wrap; /* Prevents text wrapping */
+    flex-wrap: wrap;
     flex-direction: row; /* Force items to be in a row */
     justify-content: space-between;
     align-items: center;
