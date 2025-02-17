@@ -700,3 +700,47 @@ footer p {
     margin: 0;
     font-size: 1rem;
 }
+
+/* General Fixes for Sections */
+@media (max-width: 1024px) {
+    .container, .about-section, .our-story-section, .our-values-section, .services-section {
+        max-width: 95%;
+        padding: 40px 5%;
+    }
+
+    .about-section h2, .our-story-section h3, .our-values-section h3, .services-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .services-grid, .reasons-grid, .values-grid {
+        grid-template-columns: 1fr; /* Single column on smaller devices */
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .landing h1 {
+        font-size: 2.5rem;
+    }
+
+    .landing p {
+        font-size: 1.2rem;
+    }
+
+    .about-section, .our-story-section, .our-values-section, .services-section {
+        padding: 40px 3%;
+    }
+
+    .service-card img {
+        height: 150px; /* Reduce image height on smaller screens */
+    }
+}
