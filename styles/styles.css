@@ -700,3 +700,72 @@ footer p {
     margin: 0;
     font-size: 1rem;
 }
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .about-section,
+    .our-story-section,
+    .our-values-section,
+    .services-section {
+        padding: 40px 20px; /* Reduce padding for better fit */
+    }
+}
+
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.9);
+        display: none; /* Hide menu initially */
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu button */
+        cursor: pointer;
+    }
+
+    .menu-toggle.active + nav ul {
+        display: flex; /* Show menu on toggle */
+    }
+}
+@media (max-width: 768px) {
+    .landing {
+        height: auto; /* Adjust height */
+        padding: 50px 20px;
+    }
+
+    .landing h1 {
+        font-size: 2.5rem; /* Reduce size */
+    }
+
+    .landing p {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        width: 100%; /* Make button full-width */
+        text-align: center;
+    }
+}
+@media (max-width: 768px) {
+    .reasons-grid,
+    .values-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+}
+
