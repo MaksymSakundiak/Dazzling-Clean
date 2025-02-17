@@ -703,7 +703,7 @@ footer p {
 
 /* General Fixes for Sections */
 @media (max-width: 1024px) {
-    .container, .about-section, .our-story-section, .our-values-section, .services-section {
+    .container, .about-section, .our-story-section, .our-values-section, .services-section, .contact-section {
         max-width: 95%;
         padding: 40px 5%;
     }
@@ -719,12 +719,12 @@ footer p {
 
 @media (max-width: 768px) {
     header .container {
-        flex-direction: column;
+        flex-direction: row;
         text-align: center;
     }
 
     header nav ul {
-        flex-direction: column;
+        flex-direction: row;
         gap: 15px;
     }
 
