@@ -619,7 +619,7 @@ header nav ul li a:hover {
 .contact-section {
     max-width: 800px;
     margin: 60px auto;
-    padding: 60px 380px;
+    padding: 0px;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 24px;
@@ -700,11 +700,6 @@ footer p {
     margin: 0;
     font-size: 1rem;
 }
-
-
-
-
-
 
 
 @media (max-width: 768px) {
