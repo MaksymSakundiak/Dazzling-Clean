@@ -54,11 +54,9 @@ header .logo-text {
     font-size: 1.5rem;
     font-weight: bold;
     background: linear-gradient(90deg, black, purple);
-    -webkit-background-clip: text; /* Webkit for Chrome, Safari, Edge */
-    background-clip: text; /* Standard property for future compatibility */
-    -webkit-text-fill-color: transparent; /* Ensures text is transparent to show background */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-
 
 /* Navigation Styling */
 header nav {
@@ -86,12 +84,10 @@ header nav ul li a {
     font-weight: bold;
     text-decoration: none;
     background: linear-gradient(90deg, black, purple);
-    -webkit-background-clip: text; /* Webkit for Chrome, Safari, Edge */
-    background-clip: text; /* Standard property for future compatibility */
-    -webkit-text-fill-color: transparent; /* Ensures text is transparent to show background */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     transition: opacity 0.3s ease;
 }
-
 
 header nav ul li a:hover {
     opacity: 0.7;
@@ -100,13 +96,12 @@ header nav ul li a:hover {
 /* Responsive Styles */
 @media (max-width: 768px) {
     header .container {
-        flex-direction: row; /* Keep the container in a row */
+        flex-direction: column;
         align-items: center;
     }
 
     header nav ul {
-        flex-direction: row; /* Keep the nav items in a row */
-        justify-content: center; /* Center the items */
+        flex-direction: column;
         width: 100%;
         text-align: center;
         gap: 15px;
@@ -117,11 +112,10 @@ header nav ul li a:hover {
     }
 
     header nav ul li a {
-        font-size: 0.9rem; /* Reduce font size on mobile */
-        padding: 8px 12px; /* Reduce padding */
+        display: block;
+        padding: 10px;
     }
 }
-
 
 
 
@@ -747,4 +741,3 @@ footer p {
     .service-card img {
         height: 150px; /* Reduce image height on smaller screens */
     }
-
