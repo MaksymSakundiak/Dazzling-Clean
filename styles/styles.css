@@ -36,18 +36,26 @@ header .container {
 header .logo-container {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 header .logo img {
     height: 50px;
     width: auto;
+    transition: transform 0.3s ease-in-out;
 }
 
+header .logo img:hover {
+    transform: scale(1.1);
+}
+
+/* Gradient Text Effect */
 header .logo-text {
     font-size: 1.5rem;
     font-weight: bold;
-    margin-left: 10px;
-    color: #1378fd;
+    background: linear-gradient(90deg, black, purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Navigation Styling */
@@ -58,45 +66,44 @@ header nav {
 
 header nav ul {
     display: flex;
-    flex-direction: row;  /* Ensures items align horizontally */
     list-style: none;
     padding: 0;
     margin: 0;
     gap: 20px;
-    flex-wrap: nowrap; /* Prevents items from stacking */
+    flex-wrap: nowrap;
 }
 
 header nav ul li {
     display: inline-block;
 }
 
+/* Gradient Effect for Nav Links */
 header nav ul li a {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #000;
     text-decoration: none;
-    transition: color 0.3s ease;
+    background: linear-gradient(90deg, black, purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: opacity 0.3s ease;
 }
 
 header nav ul li a:hover {
-    color: #1378fd;
+    opacity: 0.7;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     header .container {
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
     }
 
     header nav ul {
-        flex-direction: row; /* Stacks items on mobile */
+        flex-direction: column;
         width: 100%;
         text-align: center;
-    }
-
-    header nav ul li {
-        width: 100%;
+        gap: 15px;
     }
 
     header nav ul li a {
@@ -104,6 +111,7 @@ header nav ul li a:hover {
         padding: 10px;
     }
 }
+
 
 
 
