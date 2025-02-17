@@ -719,12 +719,12 @@ footer p {
 
 @media (max-width: 768px) {
     header .container {
-        flex-direction: column;
+        flex-direction: row;
         text-align: center;
     }
 
     header nav ul {
-        flex-direction: column;
+        flex-direction: row;
         gap: 15px;
     }
 
