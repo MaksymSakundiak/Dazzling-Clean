@@ -712,7 +712,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap; /* Ensure it stays a row unless absolutely needed */
+    flex-wrap: wrap; /* Allow items to stack if needed */
     padding: 20px 5%;
     max-width: 1200px;
     margin: auto;
