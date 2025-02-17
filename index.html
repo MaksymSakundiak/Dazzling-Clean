@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dazzling Clean</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.jpg">
+
 </head>
 <body>
 <!-- Header with Logo -->
@@ -167,7 +169,7 @@
     <section id="contact" class="contact-section">
         <h2>Contact Us</h2>
         <p>Have questions or need a quote? Reach out to us, and we'll get back to you as soon as possible!</p>
-        <form class="contact-form">
+        <form action="https://formsubmit.co/makssakundak2008@gmail.com" method="POST" class="contact-form">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -181,6 +183,7 @@
                 <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             <button type="submit" class="submit-btn">Send Message</button>
+            <input type="hidden" name="_captcha" value="false">
         </form>
     </section>
 

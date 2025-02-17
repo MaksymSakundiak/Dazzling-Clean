@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book a Service - Dazzling Clean</title>
     <link rel="stylesheet" href="styles/book.css">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.jpg">
+
 </head>
 <body>
     <header>
@@ -29,7 +31,7 @@
     <section class="booking-section">
         <h2>Book a Service</h2>
         <p>Fill out the form below to book your service.</p>
-        <form class="booking-form">
+        <form class="booking-form" id="bookingForm">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -53,12 +55,39 @@
     <footer>
         <p>&copy; 2025 Dazzling Clean. All rights reserved.</p>
     </footer>
-
     <script>
         // Populate the service field based on the query parameter
         const urlParams = new URLSearchParams(window.location.search);
         const service = urlParams.get('service');
         document.getElementById('service').value = service;
+    
+        // Handle form submission
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+    
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+    
+            try {
+                const response = await fetch('http://localhost:5009/submit-booking', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+    
+                if (response.ok) {
+                    alert('Booking submitted successfully!');
+                    window.location.href = 'index.html'; // Redirect to home page
+                } else {
+                    alert('Error submitting booking. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error submitting booking. Please try again.');
+            }
+        });
     </script>
 </body>
 </html>
