@@ -42,7 +42,7 @@
 
             <!-- Cleaning Type -->
             <label for="cleaning-type">Type of cleaning needed*</label>
-            <select id="cleaning-type" name="cleaning-type" required>
+            <select id="cleaning-type" name="cleaningType" required>
                 <option>Deep Cleaning</option>
                 <option>Post Renovation</option>
                 <option>Move In</option>
@@ -52,7 +52,7 @@
 
             <!-- Home Details -->
             <label for="square-feet">How many square feet?*</label>
-            <input type="number" id="square-feet" name="square-feet" required>
+            <input type="number" id="square-feet" name="squareFeet" required>
 
             <label for="bedrooms">How Many Bedrooms?*</label>
             <input type="number" id="bedrooms" name="bedrooms" required>
@@ -61,7 +61,7 @@
             <input type="number" id="bathrooms" name="bathrooms" required>
 
             <label for="half-bathrooms">How Many Half Bathrooms?*</label>
-            <input type="number" id="half-bathrooms" name="half-bathrooms" required>
+            <input type="number" id="half-bathrooms" name="halfBathrooms" required>
 
             <label for="people">Number of people*</label>
             <input type="number" id="people" name="people" required>
@@ -71,7 +71,7 @@
 
             <!-- Floor Type -->
             <label for="floor-type">Type of floor in living area?*</label>
-            <select id="floor-type" name="floor-type" required>
+            <select id="floor-type" name="floorType" required>
                 <option>Carpet</option>
                 <option>Tile</option>
                 <option>Wood</option>
@@ -79,7 +79,7 @@
             </select>
 
             <label for="cleaning-levels">How many levels to be cleaned?*</label>
-            <input type="number" id="cleaning-levels" name="cleaning-levels" required>
+            <input type="number" id="cleaning-levels" name="cleaningLevels" required>
 
             <!-- Service Frequency -->
             <label for="frequency">Frequency of service required:</label>
@@ -89,7 +89,7 @@
             </select>
             
             <label for="how-often">How often?</label>
-            <select id="how-often" name="how-often">
+            <select id="how-often" name="howOften">
                 <option>Weekly</option>
                 <option>Bi-weekly</option>
                 <option>Monthly</option>
@@ -106,26 +106,26 @@
 
             <div class="additional-services">
                 <label for="additional-services">Additional services:</label>
-                <input type="checkbox" name="additional-services" value="Oven inside">
+                <input type="checkbox" name="additionalServices" value="Oven inside">
                 <span>Oven inside</span>
-                <input type="checkbox" name="additional-services" value="Refrigerator inside">
+                <input type="checkbox" name="additionalServices" value="Refrigerator inside">
                 <span>Refrigerator inside</span>
-                <input type="checkbox" name="additional-services" value="Windows inside">
+                <input type="checkbox" name="additionalServices" value="Windows inside">
                 <span>Windows inside</span>
-                <input type="checkbox" name="additional-services" value="Carpet Cleaning">
+                <input type="checkbox" name="additionalServices" value="Carpet Cleaning">
                 <span>Carpet Cleaning</span>
             </div>
             
             <!-- Contact Information -->
             <h3>Contact Information</h3>
             <label for="hear-about">How did you hear about us?*</label>
-            <input type="text" id="hear-about" name="hear-about" required>
+            <input type="text" id="hear-about" name="hearAbout" required>
 
             <label for="comments">Comments & Questions:</label>
             <textarea id="comments" name="comments"></textarea>
 
             <label for="full-name">First & Last Name*:</label>
-            <input type="text" id="full-name" name="full-name" required>
+            <input type="text" id="full-name" name="fullName" required>
 
             <label for="address">Address*:</label>
             <input type="text" id="address" name="address" required>
@@ -143,7 +143,7 @@
             <input type="text" id="province" name="province" required>
 
             <label for="postal-code">Postal Code*:</label>
-            <input type="text" id="postal-code" name="postal-code" required>
+            <input type="text" id="postal-code" name="postalCode" required>
 
             <button type="submit" class="submit-btn">Book Now</button>
         </form>
@@ -156,15 +156,53 @@
         // 🔹 Ensure only today or future dates can be selected
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('date').setAttribute('min', today);
+    
         // 🔹 Populate the service field based on the query parameter
         const urlParams = new URLSearchParams(window.location.search);
         const service = urlParams.get('service');
         document.getElementById('service').value = service ? service : "Not specified";
+    
         // 🔹 Handle form submission
         document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+    
+            // Disable the submit button
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+    
+            // Validate required fields
+            const requiredFields = [
+                'homeType', 'cleaningType', 'squareFeet', 'bedrooms', 'bathrooms',
+                'halfBathrooms', 'people', 'pets', 'floorType', 'cleaningLevels',
+                'frequency', 'hearAbout', 'fullName', 'address', 'phone', 'city',
+                'province', 'postalCode', 'email', 'date'
+            ];
+    
+            let isValid = true;
+            requiredFields.forEach(field => {
+                const input = e.target.querySelector(`[name="${field}"]`);
+                if (!input || !input.value) {
+                    isValid = false;
+                    alert(`Please fill out the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`);
+                }
+            });
+    
+            if (!isValid) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Book Now';
+                return; // Stop submission if validation fails
+            }
+    
+            // Collect form data
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData.entries());
+    
+            // Handle checkboxes (additional services)
+            data.additionalServices = Array.from(e.target.querySelectorAll('input[name="additionalServices"]:checked'))
+                .map(checkbox => checkbox.value)
+                .join(', ');
+    
             try {
                 const response = await fetch('https://dazzling-clean-back-end.onrender.com/submit-booking', {
                     method: 'POST',
@@ -173,7 +211,9 @@
                     },
                     body: JSON.stringify(data),
                 });
+    
                 const result = await response.json(); // Get response from backend
+    
                 if (response.ok) {
                     alert(result.message || 'Booking submitted successfully!');
                     window.location.href = 'index.html'; // Redirect to home page
@@ -183,6 +223,10 @@
             } catch (error) {
                 console.error('Error:', error);
                 alert('Error submitting booking. Please try again.');
+            } finally {
+                // Re-enable the submit button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Book Now';
             }
         });
     </script>
