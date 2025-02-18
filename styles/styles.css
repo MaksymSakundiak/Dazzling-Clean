@@ -70,8 +70,9 @@ header nav ul {
     padding: 0;
     margin: 0;
     gap: 20px;
-    flex-wrap: wrap; /* Allow items to wrap in case of overflow */
-    justify-content: flex-end; /* Align items to the right */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: flex-end;
+    overflow-x: auto; /* Allow horizontal scroll */
 }
 
 header nav ul li {
@@ -101,21 +102,23 @@ header nav ul li a:hover {
     }
 
     header nav ul {
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         text-align: center;
         gap: 15px;
+        padding: 0 10px;
     }
 
     header nav ul li {
-        width: 100%; /* Make each item take full width */
+        white-space: nowrap; /* Prevent text from wrapping */
     }
 
     header nav ul li a {
-        display: block;
-        padding: 10px;
+        font-size: 0.9rem; /* Reduce font size on mobile */
+        padding: 8px 12px; /* Reduce padding */
     }
 }
+
 
 
 
