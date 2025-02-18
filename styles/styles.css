@@ -1,4 +1,7 @@
-/* General Styles */
+
+html {
+    scroll-behavior: smooth;
+}/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #ffffff, #becdff);
