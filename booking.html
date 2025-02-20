@@ -104,6 +104,7 @@
                 <option>Heavy</option>
             </select>
 
+            <!-- Additional Services -->
             <div class="additional-services">
                 <label for="additional-services">Additional services:</label>
                 <input type="checkbox" name="additionalServices" value="Oven inside">
@@ -172,7 +173,21 @@
         document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            // Collect all selected additional services
+            const additionalServices = [];
+            document.querySelectorAll('input[name="additionalServices"]:checked').forEach((checkbox) => {
+                additionalServices.push(checkbox.value);
+            });
+
+            // Create a FormData object from the form
             const formData = new FormData(e.target);
+
+            // Add the additional services array to the FormData
+            additionalServices.forEach((service) => {
+                formData.append('additionalServices', service);
+            });
+
+            // Convert FormData to a plain object
             const data = Object.fromEntries(formData.entries());
 
             try {
