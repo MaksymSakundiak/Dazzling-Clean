@@ -183,9 +183,7 @@
             const formData = new FormData(e.target);
 
             // Add the additional services array to the FormData
-            additionalServices.forEach((service) => {
-                formData.append('additionalServices', service);
-            });
+            formData.append('additionalServices', additionalServices.join(','));
 
             // Convert FormData to a plain object
             const data = Object.fromEntries(formData.entries());
