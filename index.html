@@ -218,16 +218,40 @@
                 const result = await response.json(); // Get response from backend
     
                 if (response.ok) {
-                    alert(result.message || 'Message sent successfully!');
+                    showAlert(result.message || 'Message sent successfully!', 'success');
                     e.target.reset(); // Clear the form
                 } else {
-                    alert(result.error || 'Error sending message. Please try again.');
+                    showAlert(result.error || 'Error sending message. Please try again.', 'error');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Error sending message. Please try again.');
+                showAlert('Error sending message. Please try again.', 'error');
             }
         });
+    
+        // Function to show alert
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            const alertMessage = document.getElementById('alert-message');
+    
+            alertMessage.textContent = message;
+            alert.className = `alert ${type}`; // Add success or error class
+            alert.style.display = 'block'; // Show the alert
+    
+            // Hide the alert after 5 seconds
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+    
+        // Close alert when the close button is clicked
+        document.getElementById('close-alert').addEventListener('click', () => {
+            document.getElementById('alert').style.display = 'none';
+        });
     </script>
+<div id="alert" class="alert">
+    <span id="alert-message"></span>
+    <button id="close-alert" class="close-btn">&times;</button>
+</div>
 </body>
 </html>

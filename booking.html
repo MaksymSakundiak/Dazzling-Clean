@@ -163,31 +163,31 @@
         // 🔹 Ensure only today or future dates can be selected
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('date').setAttribute('min', today);
-
+    
         // 🔹 Populate the service field based on the query parameter
         const urlParams = new URLSearchParams(window.location.search);
         const service = urlParams.get('service');
         document.getElementById('service').value = service ? service : "Not specified";
-
+    
         // 🔹 Handle form submission
         document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-
+    
             // Collect all selected additional services
             const additionalServices = [];
             document.querySelectorAll('input[name="additionalServices"]:checked').forEach((checkbox) => {
                 additionalServices.push(checkbox.value);
             });
-
+    
             // Create a FormData object from the form
             const formData = new FormData(e.target);
-
+    
             // Add the additional services array to the FormData
             formData.append('additionalServices', additionalServices.join(','));
-
+    
             // Convert FormData to a plain object
             const data = Object.fromEntries(formData.entries());
-
+    
             try {
                 const response = await fetch('https://dazzling-clean-back-end.onrender.com/submit-booking', {
                     method: 'POST',
@@ -196,19 +196,41 @@
                     },
                     body: JSON.stringify(data),
                 });
-
+    
                 const result = await response.json(); // Get response from backend
-
+    
                 if (response.ok) {
-                    alert(result.message || 'Booking submitted successfully!');
-                    window.location.href = 'index.html'; // Redirect to home page
+                    showAlert(result.message || 'Booking submitted successfully!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html'; // Redirect to home page after 3 seconds
+                    }, 3000);
                 } else {
-                    alert(result.error || 'Error submitting booking. Please try again.');
+                    showAlert(result.error || 'Error submitting booking. Please try again.', 'error');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Error submitting booking. Please try again.');
+                showAlert('Error submitting booking. Please try again.', 'error');
             }
+        });
+    
+        // Function to show alert
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            const alertMessage = document.getElementById('alert-message');
+    
+            alertMessage.textContent = message;
+            alert.className = `alert ${type}`; // Add success or error class
+            alert.style.display = 'block'; // Show the alert
+    
+            // Hide the alert after 5 seconds
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+    
+        // Close alert when the close button is clicked
+        document.getElementById('close-alert').addEventListener('click', () => {
+            document.getElementById('alert').style.display = 'none';
         });
     </script>
 </body>
