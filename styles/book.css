@@ -373,3 +373,46 @@ footer p {
 .alert.error {
     background-color: #f44336; /* Red for error */
 }
+
+
+
+
+/*          ---------PRICING BOX---------       */
+
+/* Pricing Box Styles */
+#pricing-box {
+    background-color: #f1f8ff;
+    border: 1px solid #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.1);
+}
+
+#pricing-box h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #007bff;
+}
+
+#pricing-box p {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Style for dollar signs */
+.dollar {
+    color: #28a745; /* Green color */
+    font-size: 1.2em; /* Larger font size */
+    font-weight: bold; /* Bold */
+}
+
+/* Style for dollar signs and numbers */
+.price {
+    color: #28a745; /* Green color */
+    font-size: 1.2em; /* Larger font size */
+    font-weight: bold; /* Bold */
+}

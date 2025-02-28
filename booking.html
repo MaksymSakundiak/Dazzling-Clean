@@ -39,7 +39,6 @@
                 <option>Townhouse</option>
                 <option>Condo</option>
                 <option>Office</option>
-
             </select>
 
             <!-- Cleaning Type -->
@@ -61,15 +60,7 @@
             <input type="number" id="bathrooms" name="bathrooms" required>
 
             <label for="half-bathrooms">How Many Half Bathrooms?</label>
-            <input type="number" id="half-bathrooms" name="halfBathrooms" required>
-
-            <!-- DELETED-->
-<!-- 
-            <label for="people">Number of people*</label>
-            <input type="number" id="people" name="people" required>
-
-            <label for="pets">Number of pets*</label>
-            <input type="number" id="pets" name="pets" required> -->
+            <input type="number" id="half-bathrooms" name="halfBathrooms">
 
             <!-- Floor Type -->
             <label for="floor-type">Type of floor in living area?*</label>
@@ -122,7 +113,7 @@
             <!-- Contact Information -->
             <h3>Contact Information</h3>
             <label for="hear-about">How did you hear about us?</label>
-            <input type="text" id="hear-about" name="hearAbout" required>
+            <input type="text" id="hear-about" name="hearAbout">
 
             <label for="comments">Comments & Questions:</label>
             <textarea id="comments" name="comments"></textarea>
@@ -153,6 +144,12 @@
 
             <label for="postal-code">Postal Code*:</label>
             <input type="text" id="postal-code" name="postalCode" required>
+
+            <!-- Pricing Box -->
+            <div id="pricing-box">
+                <h3>PRICING</h3>
+                <p id="pricing-info">Select options to see pricing.</p>
+            </div>
 
             <button type="submit" class="submit-btn">Book Now</button>
         </form>
@@ -229,10 +226,51 @@
                 alert.style.display = 'none';
             }, 2000);
         }
+
+        function updatePricing() {
+    const homeType = document.getElementById('home-type').value;
+    const cleaningType = document.getElementById('cleaning-type').value;
+    const squareFeet = parseInt(document.getElementById('square-feet').value) || 0;
+    const bedrooms = parseInt(document.getElementById('bedrooms').value) || 0;
+    const bathrooms = parseInt(document.getElementById('bathrooms').value) || 0;
+    const halfBathrooms = parseInt(document.getElementById('half-bathrooms').value) || 0;
+
+    let pricingInfo = '';
+
+    if (cleaningType === 'Standard cleaning') {
+        if (bedrooms === 1 || bedrooms === 2) {
+            pricingInfo = '1-2 bedrooms: <span class="price">$100-$200</span>';
+        } else if (bedrooms === 3 || bedrooms === 4) {
+            pricingInfo = '3-4 bedrooms: <span class="price">$150-$300</span>';
+        }
+    } else if (cleaningType === 'Deep Cleaning') {
+        if (squareFeet >= 1000 && squareFeet <= 2000) {
+            pricingInfo = '1000-2000 square feet: <span class="price">$200-$500</span>';
+        }
+    } else if (cleaningType === 'Post Renovation') {
+        if (homeType === 'Apartment' && bedrooms === 1 && bathrooms === 1) {
+            pricingInfo = 'Small apartments (1 bedroom, 1 bathroom): <span class="price">$150-$250</span>';
+        } else if (homeType === 'House' && (bedrooms === 2 || bedrooms === 3) && (bathrooms === 1 || bathrooms === 2)) {
+            pricingInfo = 'Medium-sized homes (2-3 bedrooms, 1-2 bathrooms): <span class="price">$250-$400</span>';
+        } else if (homeType === 'House' && bedrooms >= 4) {
+            pricingInfo = 'Larger homes (4+ bedrooms, multiple bathrooms): <span class="price">$400-$600</span>';
+        }
+    }
+
+    document.getElementById('pricing-info').innerHTML = pricingInfo || 'Select options to see pricing.';
+}
+
+    // Add event listeners to form elements to update pricing
+    document.getElementById('home-type').addEventListener('change', updatePricing);
+    document.getElementById('cleaning-type').addEventListener('change', updatePricing);
+    document.getElementById('square-feet').addEventListener('input', updatePricing);
+    document.getElementById('bedrooms').addEventListener('input', updatePricing);
+    document.getElementById('bathrooms').addEventListener('input', updatePricing);
+    document.getElementById('half-bathrooms').addEventListener('input', updatePricing);
     </script>
     <!-- Alert Container -->
-<div id="alert" class="alert">
-    <span id="alert-message"></span>
-</div>
+    <div id="alert" class="alert">
+        <span id="alert-message"></span>
+    </div>
 </body>
 </html>
