@@ -406,18 +406,20 @@ footer p {
 /* Style for dollar signs */
 .dollar {
     color: #28a745; /* Green color */
+    font-size: 2em; /* Larger font size */
+    font-weight: bold; /* Bold */
+}
+
+/* Style for price before tax */
+.price {
+    color: orange; /* Orange color */
     font-size: 1.2em; /* Larger font size */
     font-weight: bold; /* Bold */
 }
 
-/* Style for dollar signs and numbers */
-.price {
+/* Style for price after tax */
+.price-after-tax {
     color: #28a745; /* Green color */
     font-size: 1.2em; /* Larger font size */
-    font-weight: bold; /* Bold */
-}
-
-.price-after-tax {
-    color: orange;
     font-weight: bold;
 }
