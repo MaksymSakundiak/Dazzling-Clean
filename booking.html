@@ -86,9 +86,6 @@
                 <option>Other</option>
             </select>
 
-            <label for="cleaning-levels">How many levels to be cleaned?*</label>
-            <input type="number" id="cleaning-levels" name="cleaningLevels" required>
-
             <!-- Service Frequency -->
             <label for="frequency">Frequency of service required:</label>
             <select id="frequency" name="frequency">
@@ -207,6 +204,8 @@
                     newOption.textContent = option;
                     homeTypeSelect.appendChild(newOption);
                 });
+                bathroomsGroup.style.display = 'none'; // Remove Bathrooms
+                halfBathroomsGroup.style.display = 'none'; // Remove Half Bathrooms
                 bedroomsGroup.style.display = 'none'; // Remove Bedrooms
             } else if (serviceType === 'Post-Construction Cleaning') {
                 const postConstructionOptions = ['House', 'Townhouse', 'Apartment', 'Condo', 'Office'];
