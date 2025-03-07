@@ -274,15 +274,6 @@
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('date').setAttribute('min', today);
 
-        // 🔹 Populate the service field based on the query parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        const service = urlParams.get('service');
-        if (service) {
-            document.getElementById('service-type').value = service;
-            updateForm(); // Update the form based on the selected service
-        }
-        document.getElementById('service').value = service ? service : "Not specified";
-
         // 🔹 Handle form submission
         document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             e.preventDefault();
