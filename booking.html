@@ -175,14 +175,14 @@
             const bedroomsGroup = document.getElementById('bedrooms-group');
             const bathroomsGroup = document.getElementById('bathrooms-group');
             const halfBathroomsGroup = document.getElementById('half-bathrooms-group');
-
+    
             // Reset the form
             homeTypeSelect.innerHTML = '';
             squareFeetGroup.style.display = 'block';
             bedroomsGroup.style.display = 'block';
             bathroomsGroup.style.display = 'block';
             halfBathroomsGroup.style.display = 'block';
-
+    
             // Update options for "What type of your home?"
             if (serviceType === 'Residential Cleaning' || serviceType === 'Move-In/Move-Out Cleaning') {
                 const residentialOptions = ['House', 'Townhouse', 'Apartment'];
@@ -216,11 +216,11 @@
                 halfBathroomsGroup.style.display = 'none'; // Remove Half Bathrooms
                 bedroomsGroup.style.display = 'none'; // Remove Bedrooms
             }
-
+    
             // Update pricing after form changes
             updatePricing();
         }
-
+    
         // Function to update pricing
         function updatePricing() {
             const homeType = document.getElementById('home-type').value;
@@ -228,27 +228,27 @@
             const squareFeet = parseInt(document.getElementById('square-feet').value) || 0;
             const bedrooms = parseInt(document.getElementById('bedrooms').value) || 0;
             const bathrooms = parseInt(document.getElementById('bathrooms').value) || 0;
-
+    
             let totalPrice = 0;
-
-            // Pricing logic for House, Apartment, Townhouse
+    
+            // Pricing logic for Residential and Move-In/Move-Out Cleaning
             if (homeType === 'House' || homeType === 'Apartment' || homeType === 'Townhouse') {
                 totalPrice = bedrooms * 100; // $100 per bedroom
                 totalPrice += bathrooms * 17.3913; // $20 per bathroom
             }
-            // Pricing logic for Office, Condo
+            // Pricing logic for Commercial Cleaning and Post-Construction Cleaning
             else if (homeType === 'Office' || homeType === 'Condo') {
                 totalPrice = squareFeet * 0.305; // $0.40 per square foot
             }
-
+    
             // Add 15% for Deep Cleaning
             if (cleaningType === 'Deep Cleaning') {
                 totalPrice *= 1.15;
             }
-
+    
             // Add 13% tax
             const priceAfterTax = totalPrice * 1.13;
-
+    
             // Display the total price and price after tax
             if (totalPrice > 0) {
                 document.getElementById('pricing-info').innerHTML = `
@@ -259,40 +259,40 @@
                 document.getElementById('pricing-info').innerHTML = 'Select options to see pricing.';
             }
         }
-
+    
         // Call updateForm() when the page loads to set the initial state
         document.addEventListener('DOMContentLoaded', updateForm);
-
+    
         // Add event listeners to form elements to update pricing
         document.getElementById('home-type').addEventListener('change', updatePricing);
         document.getElementById('cleaning-type').addEventListener('change', updatePricing);
         document.getElementById('square-feet').addEventListener('input', updatePricing);
         document.getElementById('bedrooms').addEventListener('input', updatePricing);
         document.getElementById('bathrooms').addEventListener('input', updatePricing);
-
+    
         // 🔹 Ensure only today or future dates can be selected
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('date').setAttribute('min', today);
-
+    
         // 🔹 Handle form submission
         document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-
+    
             // Collect all selected additional services
             const additionalServices = [];
             document.querySelectorAll('input[name="additionalServices"]:checked').forEach((checkbox) => {
                 additionalServices.push(checkbox.value);
             });
-
+    
             // Create a FormData object from the form
             const formData = new FormData(e.target);
-
+    
             // Add the additional services array to the FormData
             formData.append('additionalServices', additionalServices.join(','));
-
+    
             // Convert FormData to a plain object
             const data = Object.fromEntries(formData.entries());
-
+    
             try {
                 const response = await fetch('https://dazzling-clean-back-end.onrender.com/submit-booking', {
                     method: 'POST',
@@ -301,9 +301,9 @@
                     },
                     body: JSON.stringify(data),
                 });
-
+    
                 const result = await response.json(); // Get response from backend
-
+    
                 if (response.ok) {
                     showAlert(result.message || 'Booking submitted successfully!', 'success');
                     setTimeout(() => {
@@ -317,16 +317,16 @@
                 showAlert('Error submitting booking. Please try again.', 'error');
             }
         });
-
+    
         // Function to show alert
         function showAlert(message, type) {
             const alert = document.getElementById('alert');
             const alertMessage = document.getElementById('alert-message');
-
+    
             alertMessage.textContent = message;
             alert.className = `alert ${type}`; // Add success or error class
             alert.style.display = 'block'; // Show the alert
-
+    
             // Hide the alert after 5 seconds
             setTimeout(() => {
                 alert.style.display = 'none';
