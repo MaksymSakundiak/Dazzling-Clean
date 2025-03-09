@@ -72,11 +72,6 @@
                 <input type="number" id="bathrooms" name="bathrooms">
             </div>
 
-            <div id="half-bathrooms-group">
-                <label for="half-bathrooms">How Many Half Bathrooms?</label>
-                <input type="number" id="half-bathrooms" name="halfBathrooms">
-            </div>
-
             <!-- Floor Type -->
             <label for="floor-type">Type of floor in living area?*</label>
             <select id="floor-type" name="floorType" required>
@@ -172,14 +167,12 @@
             const squareFeetGroup = document.getElementById('square-feet-group');
             const bedroomsGroup = document.getElementById('bedrooms-group');
             const bathroomsGroup = document.getElementById('bathrooms-group');
-            const halfBathroomsGroup = document.getElementById('half-bathrooms-group');
     
             // Reset the form
             homeTypeSelect.innerHTML = '';
             squareFeetGroup.style.display = 'block';
             bedroomsGroup.style.display = 'block';
             bathroomsGroup.style.display = 'block';
-            halfBathroomsGroup.style.display = 'block';
     
             // Update options for "What type of your home?"
             if (serviceType === 'Residential Cleaning' || serviceType === 'Move-In/Move-Out Cleaning') {
@@ -200,7 +193,6 @@
                     homeTypeSelect.appendChild(newOption);
                 });
                 bathroomsGroup.style.display = 'none'; // Remove Bathrooms
-                halfBathroomsGroup.style.display = 'none'; // Remove Half Bathrooms
                 bedroomsGroup.style.display = 'none'; // Remove Bedrooms
             } else if (serviceType === 'Post-Construction Cleaning') {
                 const postConstructionOptions = ['House', 'Townhouse', 'Apartment', 'Condo', 'Office'];
@@ -211,7 +203,6 @@
                     homeTypeSelect.appendChild(newOption);
                 });
                 bathroomsGroup.style.display = 'none'; // Remove Bathrooms
-                halfBathroomsGroup.style.display = 'none'; // Remove Half Bathrooms
                 bedroomsGroup.style.display = 'none'; // Remove Bedrooms
             }
     
@@ -232,11 +223,11 @@
             // Pricing logic for Residential and Move-In/Move-Out Cleaning
             if (homeType === 'House' || homeType === 'Apartment' || homeType === 'Townhouse') {
                 totalPrice = bedrooms * 100; // $100 per bedroom
-                totalPrice += bathrooms * 10; // $20 per bathroom
+                totalPrice += bathrooms * 20; // $20 per bathroom
             }
             // Pricing logic for Commercial Cleaning and Post-Construction Cleaning
             else if (homeType === 'Office' || homeType === 'Condo') {
-                totalPrice = squareFeet * 0.305; // $0.40 per square foot
+                totalPrice = squareFeet * 0.40; // $0.40 per square foot
             }
     
             // Add 15% for Deep Cleaning
