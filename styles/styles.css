@@ -709,17 +709,307 @@ header nav ul li a:hover {
 
 /* Footer */
 footer {
-    background-color: #2563eb;
-    color: white;
+    background-color: #000000; /* Black background */
+    color: #fff;
+    padding: 40px 20px;
     text-align: center;
-    padding: 24px;
-    margin-top: 60px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Footer Logo */
+  .footer-logo img {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+  }
+  /* Footer Logo Container */
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center logo and text */
+    gap: 10px; /* Space between logo and text */
+  }
+  
+  /* Footer Logo Text */
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, rgb(255, 255, 255), rgb(0, 191, 255));
+    -webkit-background-clip: text; /* Webkit for Chrome, Safari, Edge */
+    background-clip: text; /* Standard property for future compatibility */
+    -webkit-text-fill-color: transparent; /* Ensures text is transparent to show background */
+    text-decoration: none; /* Remove underline */
+    display: block; /* Ensure it behaves as a block element */
+  }
+  
+/* Footer Navigation */
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 30px; /* Space between links */
 }
 
-footer p {
-    margin: 0;
-    font-size: 1rem;
+.footer-nav ul li {
+  position: relative;
 }
+
+.footer-nav ul li a {
+  color: #fff; /* White text */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 5px 10px; /* Padding for better click area */
+}
+
+.footer-nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* Position of the underline */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Thickness of the underline */
+  background-color: #ff6b6b; /* Hover underline color */
+  transform: scaleX(0); /* Start with no width */
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+  color: #ff6b6b; /* Hover text color */
+}
+
+.footer-nav ul li a:hover::after {
+  transform: scaleX(1); /* Expand the underline on hover */
+  transform-origin: bottom left;
+}
+  
+  .footer-nav ul li a:hover {
+    color: #1877f2; /* Facebook blue for hover effect */
+  }
+  
+  /* Social Icons */
+  .social-icons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  /* Tooltip Container */
+  .tooltip-container {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+  
+  .tooltip {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    border-radius: 15px;
+    box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+      inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+      5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+  }
+  
+  .tooltip-container:hover .tooltip {
+    top: -150px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  /* Profile */
+  .profile {
+    background: #3b5998; /* Facebook: #3b5998, Instagram: #2a2b2f, Discord: #2a2b2f */
+    border-radius: 10px 15px;
+    padding: 10px;
+    border: 1px solid #29487d; /* Facebook: #29487d, Instagram: #52382f, Discord: #5865f2 */
+  }
+  
+  /* Icon */
+  .icon {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    position: relative;
+  }
+  
+  .icon .layer {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #1877f2; /* Facebook: #1877f2, Instagram: #e6683c, Discord: #5865f2 */
+    border-radius: 50%;
+    transition: transform 0.3s, border 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 15px rgba(24, 119, 242, 0.7), 0 0 20px rgba(24, 119, 242, 0.5);
+  }
+  
+  .icon:hover .layer {
+    transform: rotate(-35deg) skew(20deg);
+    box-shadow: 0 0 30px rgba(24, 119, 242, 1), 0 0 40px rgba(24, 119, 242, 0.7);
+  }
+  
+  .layer span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    transition: all 0.3s;
+  }
+  
+  .layer span,
+  .text {
+    color: #1877f2; /* Facebook: #1877f2, Instagram: #e6683c, Discord: #5865f2 */
+    border-color: #1877f2; /* Facebook: #1877f2, Instagram: #e6683c, Discord: #5865f2 */
+  }
+  
+  .icon:hover .layer span {
+    box-shadow: -1px 1px 3px #1877f2; /* Facebook: #1877f2, Instagram: #e6683c, Discord: #5865f2 */
+  }
+  
+  .icon .text {
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    opacity: 0;
+    font-weight: 500;
+    transform: translateX(-50%);
+    transition: bottom 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .icon:hover .text {
+    bottom: -35px;
+    opacity: 1;
+  }
+  
+  .icon:hover .layer span:nth-child(1) {
+    opacity: 0.2;
+  }
+  
+  .icon:hover .layer span:nth-child(2) {
+    opacity: 0.4;
+    transform: translate(5px, -5px);
+  }
+  
+  .icon:hover .layer span:nth-child(3) {
+    opacity: 0.6;
+    transform: translate(10px, -10px);
+  }
+  
+  .icon:hover .layer span:nth-child(4) {
+    opacity: 0.8;
+    transform: translate(15px, -15px);
+  }
+  
+  .icon:hover .layer span:nth-child(5) {
+    opacity: 1;
+    transform: translate(20px, -20px);
+  }
+  
+  /* Facebook SVG */
+  .facebookSVG {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      45deg,
+      #1877f2 0%,
+      #3b5998 25%,
+      #1877f2 50%,
+      #3b5998 75%,
+      #1877f2 100%
+    );
+    border-radius: 50%;
+  }
+  
+  /* Instagram SVG */
+  .instagramSVG {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+      45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%
+    );
+    border-radius: 50%;
+  }
+  
+  /* Discord SVG */
+  .fab.fa-discord {
+    font-size: 16px;
+    line-height: 64px;
+    text-align: center;
+    fill: #5865f2;
+    background: #000;
+  }
+  
+  /* User Details */
+  .user {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .img {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    font-weight: 700;
+    border: 1px solid #1877f2; /* Facebook: #1877f2, Instagram: #e6683c, Discord: #5865f2 */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  }
+  
+  .name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1877f2; /* Facebook: #1877f2, Instagram: #e6683c, Discord: #5865f2 */
+  }
+  
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    color: #fff;
+  }
+  
+  .about {
+    color: #ccc;
+    padding-top: 5px;
+  }
+  
+  /* Footer Bottom */
+  .footer-bottom {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ccc;
+  }
 
 /* General Fixes for Sections */
 @media (max-width: 1024px) {
