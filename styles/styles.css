@@ -1036,7 +1036,7 @@ footer {
 
 /* General Fixes for Sections */
 @media (max-width: 1024px) {
-    .container, .about-section, .our-story-section, .our-values-section, .services-section, .contact-section {
+    .container, .about-section, .our-story-section, .our-values-section, .services-section, .contact-section, .footer-content {
         max-width: 95%;
         padding: 40px 5%;
     }
@@ -1057,7 +1057,7 @@ footer {
         font-size: 1.2rem;
     }
 
-    .about-section, .our-story-section, .our-values-section, .services-section {
+    .about-section, .our-story-section, .our-values-section, .services-section, .footer-content {
         padding: 40px 3%;
     }
 
